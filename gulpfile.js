@@ -3,6 +3,8 @@ const panini = require('panini');
 const sass = require('gulp-sass');
 const del = require('del');
 const browserSync = require('browser-sync').create();
+const babel = require('gulp-babel');
+const plumber = require('gulp-plumber');
 
 let convertHbsTask = (done) => {
 	panini.refresh();
@@ -30,9 +32,25 @@ let convertScssTask = (done) => {
 
 let moveJavascriptTask = (done) => {
 	gulp.src('./app/js/*.js')
+		.pipe(plumber())
+		.pipe(babel({
+			presets: [
+				['@babel/env', {
+					modules: false
+				}]
+			]
+		}))
 		.pipe(gulp.dest('./dist/js'));
-	gulp.src('./app/js/pages/*.js')
-		.pipe(gulp.dest('./dist/js/pages'));
+	gulp.src('./app/js/modules/*.js')
+		.pipe(plumber())
+		.pipe(babel({
+			presets: [
+				['@babel/env', {
+					modules: false
+				}]
+			]
+		}))
+		.pipe(gulp.dest('./dist/js/modules'));
 	done();
 }
 

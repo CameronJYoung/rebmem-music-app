@@ -1,3 +1,5 @@
+import {name} from './modules/test-module.js'
+
 //Variables
 const musicControlBtns = document.querySelectorAll('.pp-button');
 const homeContentContainer = document.getElementById('home-content-container');
@@ -57,6 +59,7 @@ let addListeners = () => {
     searchNavBtn();
     libraryNavBtn();
     toggleShuffleBtn();
+
 }
 
 
