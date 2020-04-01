@@ -3,9 +3,9 @@ const panini = require('panini');
 const sass = require('gulp-sass');
 const del = require('del');
 const browserSync = require('browser-sync').create();
+const fs = require("fs-extra");
+const rollup = require('gulp-rollup');
 const sourcemaps = require('gulp-sourcemaps');
-const babel = require('gulp-babel');
-const concat = require('gulp-concat');
 
 let convertHbsTask = (done) => {
 	panini.refresh();
@@ -31,16 +31,37 @@ let convertScssTask = (done) => {
 	done();
 }
 
+// let moveJavascriptTask = () => {
+//     return gulp.src('app/js/**/*.js')
+//         .pipe(sourcemaps.init())
+//         .pipe(babel({
+// 			presets: ['@babel/preset-env']
+//         }))
+//         .pipe(concat('global.js'))
+//         .pipe(sourcemaps.write('.'))
+//         .pipe(gulp.dest('./dist/js'))
+// }
+
+
 let moveJavascriptTask = () => {
-    return gulp.src('app/js/**/*.js')
-        .pipe(sourcemaps.init())
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
-        .pipe(concat('global.js'))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./dist/js'))
+	return gulp.src('./app/js/**/*.js')
+		.pipe(sourcemaps.init())
+
+		.pipe(rollup({
+			input: './app/js/global.js',
+			format: 'es'
+		}))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('./dist/js'));
 }
+
+
+
+
+
+
+
+
 
 let moveImagesTask = (done) => {
 	gulp.src('./app/img/**/*.*')
