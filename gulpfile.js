@@ -3,6 +3,7 @@ const panini = require('panini');
 const sass = require('gulp-sass');
 const del = require('del');
 const browserSync = require('browser-sync').create();
+const browserify = require('gulp-browserify');
 
 let convertHbsTask = (done) => {
 	panini.refresh();
@@ -30,8 +31,14 @@ let convertScssTask = (done) => {
 
 let moveJavascriptTask = (done) => {
 	gulp.src('./app/js/*.js')
+		.pipe(browserify({
+			insertGlobals : true
+		}))
 		.pipe(gulp.dest('./dist/js'));
 	gulp.src('./app/js/pages/*.js')
+		.pipe(browserify({
+			insertGlobals : true
+		}))
 		.pipe(gulp.dest('./dist/js/pages'));
 	done();
 }
