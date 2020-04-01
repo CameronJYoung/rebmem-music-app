@@ -1,0 +1,9 @@
+#home-content-container {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+#home-content-container > *{
+    padding: 0;
+    margin: 0;
+}

@@ -1,0 +1,149 @@
+html,body{ //Reset
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html,body > * {
+    font-family: sans-serif;
+}
+
+//layout
+.main-container { 
+    margin: inherit;
+    padding: inherit;
+    height: inherit;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    height: 10%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid black;
+}
+
+.main-content-container {
+    height: 70%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.main-controls {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.main-music-controls {
+    height: 55%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid black;
+    display: flex;
+}
+
+.main-nav {
+    height: 45%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid black;
+}
+
+.main-nav-ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.controls-container-right {
+    height: 100%;
+    width: 55%;
+}
+
+.controls-container-left {
+    height: 100%;
+    width: 20%;
+    min-height: 70px;
+    min-width: 70px;
+    background: url("../img/songs/D-Block-Europe_nookie/cover-img.jpg") no-repeat;
+    background-size: 100%;
+}
+
+.progress {
+    width: 200px;
+    height: 4px;
+    border: solid 1px black;
+}
+
+.song-data-container {
+    margin-left: 10px;
+}
+
+.controls-container-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+}
+
+.controls-button-container {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shuffle-btns {
+    width: 32px;
+    height: 32px;
+    background: url('../img/music-controls/shuffle.png');
+    background-size: 32px 32px;
+    
+}
+
+.shuffle-btns-active {
+    width: 32px;
+    height: 32px;
+    background: url('../img/music-controls/shuffle-active.png');
+    background-size: 32px 32px;
+}
+
+
+
+
+
+
+
+
+
+
+
+//Imports
+@import 'play-pause-btn.scss', 'pages/home.scss', 'pages/library.scss', 'pages/search.scss';
