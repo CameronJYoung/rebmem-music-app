@@ -3,6 +3,9 @@ const panini = require('panini');
 const sass = require('gulp-sass');
 const del = require('del');
 const browserSync = require('browser-sync').create();
+const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
+const concat = require('gulp-concat');
 
 let convertHbsTask = (done) => {
 	panini.refresh();
@@ -28,12 +31,15 @@ let convertScssTask = (done) => {
 	done();
 }
 
-let moveJavascriptTask = (done) => {
-	gulp.src('./app/js/*.js')
-		.pipe(gulp.dest('./dist/js'));
-	gulp.src('./app/js/pages/*.js')
-		.pipe(gulp.dest('./dist/js/pages'));
-	done();
+let moveJavascriptTask = () => {
+    return gulp.src('app/js/**/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
+        .pipe(concat('global.js'))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('./dist/js'))
 }
 
 let moveImagesTask = (done) => {
