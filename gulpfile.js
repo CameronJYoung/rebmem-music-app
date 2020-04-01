@@ -3,8 +3,12 @@ const panini = require('panini');
 const sass = require('gulp-sass');
 const del = require('del');
 const browserSync = require('browser-sync').create();
+<<<<<<< HEAD
 const babel = require('gulp-babel');
 const plumber = require('gulp-plumber');
+=======
+const browserify = require('gulp-browserify');
+>>>>>>> parent of 9699253... Revert "added babel"
 
 let convertHbsTask = (done) => {
 	panini.refresh();
@@ -32,6 +36,7 @@ let convertScssTask = (done) => {
 
 let moveJavascriptTask = (done) => {
 	gulp.src('./app/js/*.js')
+<<<<<<< HEAD
 		.pipe(plumber())
 		.pipe(babel({
 			presets: [
@@ -51,6 +56,17 @@ let moveJavascriptTask = (done) => {
 			]
 		}))
 		.pipe(gulp.dest('./dist/js/modules'));
+=======
+		.pipe(browserify({
+			insertGlobals : true
+		}))
+		.pipe(gulp.dest('./dist/js'));
+	gulp.src('./app/js/pages/*.js')
+		.pipe(browserify({
+			insertGlobals : true
+		}))
+		.pipe(gulp.dest('./dist/js/pages'));
+>>>>>>> parent of 9699253... Revert "added babel"
 	done();
 }
 
