@@ -5,8 +5,12 @@ const del = require('del');
 const browserSync = require('browser-sync').create();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const babel = require('gulp-babel');
 const plumber = require('gulp-plumber');
+=======
+const browserify = require('gulp-browserify');
+>>>>>>> parent of 9699253... Revert "added babel"
 =======
 const browserify = require('gulp-browserify');
 >>>>>>> parent of 9699253... Revert "added babel"
@@ -42,6 +46,7 @@ let moveJavascriptTask = (done) => {
 	gulp.src('./app/js/*.js')
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.pipe(plumber())
 		.pipe(babel({
 			presets: [
@@ -62,6 +67,8 @@ let moveJavascriptTask = (done) => {
 		}))
 		.pipe(gulp.dest('./dist/js/modules'));
 =======
+=======
+>>>>>>> parent of 9699253... Revert "added babel"
 =======
 >>>>>>> parent of 9699253... Revert "added babel"
 		.pipe(browserify({
